@@ -2,6 +2,13 @@ package offer;
 
 /**
  * 输入一个链表，反转链表后，输出链表的所有元素。
+ 
+ * 基本思路：每次反转一个节点，关键是
+ * 1.保存要反转节点(这里是current)的next引用，这里使用tmp来保存。
+ * 2.将current的next引用指向previous
+ * 3.将previous指向current，current指向tmp
+ * 4.最后别忘了更改原始头结点的next引用
+ 
  * @author zerods
  * @version 1.0 2017/3/26
  */
@@ -10,19 +17,19 @@ public class ReverseList {
         if (head == null) {
             return null;
         }
-        ListNode first = head;
-        ListNode second = head.next;
-
-        ListNode tmp;
+		
+        ListNode previous = head;
+        ListNode current = head.next;
+		ListNode tmp;
         while (second != null) {
-            tmp = second.next;
-            second.next = first;
-            first = second;
-            second = tmp;
+            tmp = current.next;
+            current.next = previous;
+            previous = current;
+            current = tmp;
         }
         head.next = null;
 
-        return first;
+        return previous;
     }
 
     public static void main(String[] args) {
@@ -36,11 +43,6 @@ public class ReverseList {
         l2.next = l3;
         l3.next = l4;
         l4.next = l5;
-
-//        while (l1 != null) {
-//            System.out.print(l1.val + " ");
-//            l1 = l1.next;
-//        }
 
         l1 = reverseList(l1);
 
