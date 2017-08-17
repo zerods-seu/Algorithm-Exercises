@@ -1,6 +1,7 @@
 package offer;
 
 /**
+ * 计算n次方
  * @author zerods
  * @version 1.0 2017/3/23
  */

@@ -6,7 +6,7 @@ package offer;
  * 基本思路：每次反转一个节点，关键是
  * 1.保存要反转节点(这里是current)的next引用，这里使用tmp来保存。
  * 2.将current的next引用指向previous
- * 3.将previous指向current，current指向tmp
+ * 3.将previous更改为current，current更改为tmp
  * 4.最后别忘了更改原始头结点的next引用
  
  * @author zerods
@@ -21,7 +21,7 @@ public class ReverseList {
         ListNode previous = head;
         ListNode current = head.next;
 		ListNode tmp;
-        while (second != null) {
+        while (current != null) {
             tmp = current.next;
             current.next = previous;
             previous = current;
